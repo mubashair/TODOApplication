@@ -8,5 +8,9 @@
 		<button type="submit">Add TODO</button>
 		
 	</form>
-	
+	<ul>
+		<li th:each="todo:${allTodos}">
+			<h1 th:text="${todo.taskContent}"></h1>
+		</li>
+	</ul>
 </html>
