@@ -1,5 +1,7 @@
 package com.todo.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Controller;
@@ -16,10 +18,7 @@ import com.todo.service.TodoService;
 public class TodoController {
 	@Autowired
 	TodoService todoService; 
-	@RequestMapping
-	public String loadForm() {
-		return "task";
-	}
+	
 	@RequestMapping(value = "/addtodo", method = RequestMethod.POST)
 	@ResponseBody
 	public String createTodo(@ModelAttribute Todo todo) {
@@ -27,8 +26,10 @@ public class TodoController {
 		return "success";
 	}
 	@RequestMapping
-	public String getAllTodo(Model model) {				
-		return "success";
+	public String getAllTodos(Model model) {
+		List<Todo> listOfTodos=todoService.getAllTodos();
+		model.addAttribute("allTodos", listOfTodos);
+		return "task";
 	}
 	public String updateTodo() {
 		return "success";
