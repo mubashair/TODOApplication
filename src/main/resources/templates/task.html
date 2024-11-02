@@ -10,7 +10,10 @@
 	</form>
 	<ol>
 		<li th:each="todo:${allTodos}">
-			<h1 th:text="${todo.taskContent}"></h1>
+			<!--<h1 th:text="${todo.taskContent}"></h1>-->
+			<input type="text" th:value="${todo.taskContent}" >
+			<input type="checkbox" th:checked="${todo.completionStatus}">
+			<button type="submit">Update</button>
 		</li>
 	</ol>
 </html>
