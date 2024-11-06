@@ -28,6 +28,14 @@
 
 
 				<a th:href="@{/deleteTodo/{id}(id=${todo.id})}" class="btn btn-danger">Delete</a>
+
+			<form action="@{/updatetodo/{id}(id=${todo.id})}" method="post">
+			<!--<h1 th:text="${todo.taskContent}"></h1>-->
+			<input type="text" th:value="${todo.taskContent}" name="taskContent">
+			<input type="checkbox" th:checked="${todo.completionStatus}" 
+			name="completionStatus">
+			<button type="submit">Update</button>
+
 			</form>
 		</li>
 	</ol>
